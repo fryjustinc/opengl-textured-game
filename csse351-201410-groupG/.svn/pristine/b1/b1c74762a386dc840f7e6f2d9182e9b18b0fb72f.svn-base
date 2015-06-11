@@ -1,0 +1,30 @@
+#include "Object.h"
+#include <vector>
+using namespace std; //makes using vectors easy
+
+class Map
+{
+public:
+	vector<Object> mapGrid[30][45][2];
+	vector<GLfloat> positions;
+	Map()
+	{
+
+		//fill with objects
+		for (int i = 0; i < 29; i++){
+			for (int j = 0; j < 44; j++){
+				for (int k = 0; k < 1; k++){
+					for (int l = 0; l < mapGrid[i][j][k].size(); l++){
+						positions.insert(positions.end(), mapGrid[i][j][k].at(l).getPolygons().begin(), mapGrid[i][j][k].at(l).getPolygons().end());
+					}
+				}
+			}
+		}
+	}
+
+	vector<Object> getObjectsAt(int x, int y, int z){
+		return mapGrid[x][y][z];
+	}
+
+	
+};

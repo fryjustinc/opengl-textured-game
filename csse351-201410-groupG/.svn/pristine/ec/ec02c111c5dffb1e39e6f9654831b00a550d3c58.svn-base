@@ -1,0 +1,88 @@
+﻿Build started 11/13/2013 3:18:55 PM.
+     1>Project "C:\Users\fryjc\Documents\School\Fall 2013\CSSE 351 Computer Graphics\csse351-201410-fryjc\program6 - Copy\program5.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\v120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (program5.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\fryjc\Documents\School\Fall 2013\CSSE 351 Computer Graphics\csse351-201410-fryjc\program6 - Copy\\include" /I"C:\SFML-1.6\include" /ZI /nologo /W3 /WX- /Od /Oy- /D SFML_DYNAMIC /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt program6.cpp
+         program6.cpp
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\shadermanager.h(49): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(346) : see declaration of '_snprintf'
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\shadermanager.h(51): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(346) : see declaration of '_snprintf'
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\shadermanager.h(156): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(78): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(81): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(84): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(87): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(90): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(93): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1075): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1081): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1084): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1093): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1099): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1108): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1120): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1126): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1132): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1144): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1150): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1156): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1165): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1168): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1171): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1174): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1177): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1180): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1198): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1204): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1207): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1267): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1270): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1276): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1288): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1291): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1294): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1297): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1300): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1303): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1344): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1346): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1374): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\item.h(1376): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(34): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(249): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(259): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(261): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(265): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(301): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(302): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(303): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(304): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(312): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(313): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(314): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(315): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(323): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(324): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(325): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(326): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(334): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(335): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(336): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\map.h(337): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\renderengine.h(49): warning C4930: 'Map map(void)': prototyped function not called (was a variable definition intended?)
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\program6.cpp(197): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\program6.cpp(209): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\program6.cpp(210): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\fryjc\documents\school\fall 2013\csse 351 computer graphics\csse351-201410-fryjc\program6 - copy\program6.cpp(211): warning C4244: 'argument' : conversion from 'double' to 'unsigned int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\fryjc\Documents\School\Fall 2013\CSSE 351 Computer Graphics\csse351-201410-fryjc\program6 - Copy\Debug\program6.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\fryjc\Documents\School\Fall 2013\CSSE 351 Computer Graphics\csse351-201410-fryjc\program6 - Copy\\lib" /LIBPATH:"C:\SFML-1.6\lib" "sfml-system.lib" "sfml-window.lib" opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\fryjc\Documents\School\Fall 2013\CSSE 351 Computer Graphics\csse351-201410-fryjc\program6 - Copy\Debug\program6.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"C:\Users\fryjc\Documents\School\Fall 2013\CSSE 351 Computer Graphics\csse351-201410-fryjc\program6 - Copy\Debug\program6.lib" /MACHINE:X86 /SAFESEH Debug\glew.obj
+         Debug\program6.obj
+         program5.vcxproj -> C:\Users\fryjc\Documents\School\Fall 2013\CSSE 351 Computer Graphics\csse351-201410-fryjc\program6 - Copy\Debug\program6.exe
+     1>Done Building Project "C:\Users\fryjc\Documents\School\Fall 2013\CSSE 351 Computer Graphics\csse351-201410-fryjc\program6 - Copy\program5.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.10

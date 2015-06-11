@@ -1,0 +1,83 @@
+using namespace std;
+
+class Object{
+public:
+	vector<GLfloat> positions;
+	Object();
+	vector <GLfloat> getPolygons(){
+		return positions;
+	}
+};
+class Floor :Object
+{
+public:
+	Floor(GLfloat x, GLfloat y, GLfloat z){
+		positions.push_back(x);
+		positions.push_back(y);
+		positions.push_back(z);
+		positions.push_back(x+1);
+		positions.push_back(y);
+		positions.push_back(z);
+		positions.push_back(x);
+		positions.push_back(y + 1);
+		positions.push_back(z);
+		positions.push_back(x + 1);
+		positions.push_back(y);
+		positions.push_back(z);
+		positions.push_back(x);
+		positions.push_back(y + 1);
+		positions.push_back(z);
+		positions.push_back(x + 1);
+		positions.push_back(y + 1);
+		positions.push_back(z);
+	}
+};
+class Window :Object
+{
+public:
+	Window(GLfloat x, GLfloat y, GLfloat z, int orientation){
+		
+	}
+};
+class Wall :Object
+{
+public:
+	Wall(GLfloat x, GLfloat y, GLfloat z, int orientation){
+
+	}
+};
+class Cover :Object
+{
+public:
+	Cover(GLfloat x, GLfloat y, GLfloat z, int orientation){
+
+	}
+};
+class Ramp :Object
+{
+public:
+	Ramp(GLfloat x, GLfloat y, GLfloat z, int orientation){
+
+	}
+};
+class Target :Object
+{
+public:
+	Target(GLfloat x, GLfloat y, GLfloat z, int orientation){
+
+	}
+};
+class Bullet :Object
+{
+public:
+	Bullet(GLfloat x, GLfloat y, GLfloat z, int orientation){
+
+	}
+};
+class Hit :Object
+{
+public:
+	Hit(GLfloat x, GLfloat y, GLfloat z, int orientation){
+
+	}
+};

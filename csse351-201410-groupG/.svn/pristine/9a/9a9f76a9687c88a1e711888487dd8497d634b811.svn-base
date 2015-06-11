@@ -1,0 +1,248 @@
+//Replace with your usernames!
+#define printusers() printf("Program by Fryjc, Veatchje, and Senatwj\n");
+
+#define GLEW_STATIC
+#include <stdio.h>
+#include <stdlib.h>
+#include "glew/glew.h"
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+#include <math.h>
+#define _USE_MATH_DEFINES
+#include "ShaderManager.h"
+#include "GLHelper.h"
+#include "RenderEngine.h"
+
+#define RESOLUTION 1080
+#define TARGET_FPS 30              
+
+class Program6
+{
+public:
+	glm::vec3 location;
+
+	float directionX;
+	float directionY;
+	float directionZ;
+
+	bool out;
+	glm::mat4 rotate;
+	glm::mat4 translate;
+
+	Program6(unsigned int const & w, unsigned int const & h)
+	{
+
+		angleXY = 0;
+		angleZ = 0;
+		App = new sf::Window(sf::VideoMode(RESOLUTION, RESOLUTION, 32), "The Course");
+		App->ShowMouseCursor(false);
+		render.init(w, h);
+		size = render.map.getUnitSize();
+		step = 2;
+		location = glm::vec3(52.0f,31.0f, 0.3f);
+		directionX = 0.0f;
+		directionY = 1.0f;
+		directionZ = 0.0f;
+		out = false;
+		rotate = glm::mat4(1);
+		translate = glm::mat4(1);
+		render.setView(glm::lookAt(glm::vec3(52.0f, 31.0f, 0.3f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
+		while (App->IsOpened())
+		{
+			App->SetActive();
+			float targetFrameTime = 1.0f / (float)TARGET_FPS;
+			float sleepTime = targetFrameTime - App->GetFrameTime();
+			if (sleepTime > 0)
+				sf::Sleep(sleepTime);
+			render.setTransform(glm::translate(glm::mat4(1), glm::vec3(0, 0, -1.9)));
+			render.display();
+			App->Display();
+			handleEvents();
+		}
+	}
+
+	// *glm::rotate(translate*rotate*glm::mat4(1), (float)-90., glm::vec3(1, 0, 0))*glm::rotate(glm::mat4(1), (float)-90., glm::vec3(0, 1, 0))
+	~Program6()
+	{
+	}
+	void turn(){
+		angleXY += (-positionX);
+		angleZ += (-positionY);
+		if (angleZ < -89.0f)
+			angleZ = -89.0f;
+		if (angleZ >89.0f)
+			angleZ = 89.0f;
+		if (angleXY < -180.0f)
+			angleXY += 360.0f;
+		if (angleXY>180.0f)
+			angleXY -= 360.0f;
+		glm::vec3 direction2 = glm::vec3(glm::rotate(glm::mat4(1), angleZ, glm::vec3(1.0f, 0.0f, 0.0f))*glm::vec4(0.0f, 1.0f, 0.0f, 0.0f));
+		glm::vec3 direction1 = glm::vec3(glm::rotate(glm::mat4(1), angleXY, glm::vec3(0.0f, 0.0f, 1.0f))*glm::vec4(direction2,1.0f));
+		directionX = direction1.x;
+		directionY = direction1.y;
+		directionZ = direction1.z;
+		upX = 0.0f;
+		upY = 0.0f;
+		upZ = 1.0f;
+		render.setView(glm::lookAt(location, glm::vec3(location.x+directionX, location.y + directionY, location.z + directionZ), glm::vec3(upX,upY,upZ)));
+	}
+	void clipForward(){
+		float x, y, z;
+		x = location.x;
+		y = location.y;
+		z = location.z;
+		float directionXClip = directionX;
+		float directionYClip = directionY;
+		float directionZClip = directionZ;
+		render.map;
+		if (fmodf((location.y), size) < (size / 8)){
+			if ((directionX>0)&render.map.bottomBlocked(x + 1, y, z))
+				directionXClip = 0;
+			if ((directionX<0)&&render.map.bottomBlocked(x - 1, y, z))
+				directionXClip = 0;
+		}
+		if (fmodf((location.y), size) > (7*size / 8)){
+			if ((directionX > 0)&&render.map.topBlocked(x + 1, y, z))
+				directionXClip = 0;
+			if ((directionX < 0)&&render.map.topBlocked(x - 1, y, z))
+				directionXClip = 0;
+		}
+		if (fmodf((location.x), size) < (size / 8)){
+			if ((directionY>0)&&(render.map.leftBlocked(x, y + 1, z)))
+				directionYClip = 0;
+			if ((directionY<0)&&(render.map.leftBlocked(x, y - 1, z)))
+				directionYClip = 0;
+		}
+		if (fmodf((location.x), size) >(7 * size / 8)){
+			if ((directionY>0)&&(render.map.rightBlocked(x, y + 1, z)))
+				directionYClip = 0;
+			if ((directionY < 0)&&(render.map.rightBlocked(x, y - 1, z)))
+				directionYClip = 0;
+		}
+		printf("direction %i %i ", x,y);
+		if ((testTop && render.map.topBlocked(x, y, z))||(testBot &&render.map.bottomBlocked(x, y, z)))
+			directionYClip = 0;
+		if ((testLeft && render.map.leftBlocked(x, y, z)) || (testRight && render.map.rightBlocked(x, y, z)))
+			directionXClip = 0;
+		if (render.map.floorGrid[(int) floor(x - 30.00000001)][(int) ceil(y - 29.9999999)][(int) floor(z - 0.29999999)].floorType== 0)
+			location = glm::vec3(location.x + directionXClip*size*0.05, location.y + directionYClip*size*0.05, location.z);
+		else{
+			if (render.map.floorGrid[(int)floor(location.x - 30.00000001)][(int)ceil(location.y - 29.9999999)][(int)floor(location.z - 0.29999999)].getOrientation()==0)
+				location = glm::vec3(location.x + directionXClip*size*0.05, location.y + directionYClip*size*0.05, location.z + directionX*0.05*0.1666667);
+			else
+				location = glm::vec3(location.x + directionXClip*size*0.05, location.y + directionYClip*size*0.05, location.z - directionY*0.05*0.1666667);
+		}
+		if (location.z < 0.3f)
+			location.z = 0.3f;
+	}
+	void forward(){
+		xMargin = fmodf((location.x), size);
+		yMargin = fmodf((location.y), size);
+		testTop = (directionY>0 && yMargin>(0.75)&&location.y>0);
+		testBot = (directionY < 0 && yMargin < (0.25));
+		testRight = (directionX > 0 && xMargin > (0.75)&&location.x>0);
+		testLeft = (directionX < 0 && xMargin <(0.25));
+		if (testTop || testBot || testRight || testLeft)
+			clipForward();
+		else{
+			if (render.map.floorGrid[(int)floor(location.x - 30.00000001)][(int)ceil(location.y - 29.9999999)][(int)floor(location.z - 0.29999999)].floorType == 0)
+				location = glm::vec3(location.x + this->directionX*size*0.05, location.y + this->directionY*size*0.05, location.z);
+			else{
+				if (render.map.floorGrid[(int)floor(location.x - 30.00000001)][(int)ceil(location.y - 29.9999999)][(int)floor(location.z - 0.29999999)].getOrientation()==0)
+					location = glm::vec3(location.x + this->directionX*size*0.05, location.y + this->directionY*size*0.05, location.z + directionX*0.05*0.1666667);
+				else
+					location = glm::vec3(location.x + this->directionX*size*0.05, location.y + this->directionY*size*0.05, location.z - directionY*0.05*0.1666667);
+			}
+		}
+		if (location.z < 0.3f)
+			location.z = 0.3f;
+	}
+	
+private:
+	float upX, upY, upZ;
+	float size;
+	bool testTop, testBot, testRight, testLeft;
+	float xMargin;
+	float yMargin;
+	float angleXY;
+	float angleZ;
+	float positionX;
+	float positionY;
+	sf::Window *App;
+	RenderEngine render;
+	unsigned int step;
+
+	void handleEvents()
+	{
+		const sf::Input& Input = App->GetInput();
+		bool shiftDown = Input.IsKeyDown(sf::Key::LShift) || Input.IsKeyDown(sf::Key::RShift);
+		sf::Event Event;
+		while (App->GetEvent(Event))
+		{
+			if (Event.Type == sf::Event::Closed)
+				App->Close();
+			if ((Event.Type == sf::Event::KeyPressed) && (Event.Key.Code == sf::Key::Escape))
+				App->Close();
+			
+			// This is for grading your code. DO NOT REMOVE
+			if(Event.Type == sf::Event::KeyPressed && Event.Key.Code == sf::Key::Equal)
+			{
+				unsigned char *dest;
+				unsigned int w = App->GetWidth();
+				unsigned int h = App->GetHeight();
+				glPixelStorei(GL_PACK_ALIGNMENT, 1);
+				dest = (unsigned char *) malloc( sizeof(unsigned char)*w*h*3);
+				glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, dest);
+				
+				FILE *file;
+				file = fopen("_program1.ppm", "wb");
+				fprintf(file, "P6\n%i %i\n%i\n", w, h, 255);
+				for(int i=h-1; i>=0; i--)
+					fwrite(&dest[i*w*3], sizeof(unsigned char), w*3, file);
+				fclose(file);
+				free(dest);
+			}
+			
+			if (Event.Type == sf::Event::Resized)
+			{ glViewport(0, 0, Event.Size.Width, Event.Size.Height); }
+
+			if (Event.Type == sf::Event::MouseMoved){
+				positionX = Event.MouseMove.X - RESOLUTION / 2.0;
+				positionY = Event.MouseMove.Y - RESOLUTION / 2.0;
+				App->SetCursorPosition(RESOLUTION / 2.0, RESOLUTION / 2.0);
+
+				if (!out)
+					turn();
+			}
+			if (Event.Type == sf::Event::KeyPressed && Event.Key.Code == sf::Key::W)
+			{
+				forward();
+				if (!out){
+					render.setView(glm::lookAt(location, glm::vec3(location.x+directionX, location.y + directionY, location.z + directionZ), glm::vec3(upX, upY, upZ)));
+				}
+			}
+		}
+	}
+};
+
+int main(int argc, char ** argv)
+{
+	printusers();
+	
+	/* check that there are sufficient arguments */
+	unsigned int w;
+	unsigned int h;
+	if (argc < 3) {
+		w = 6;
+		h = 6;
+		//fprintf(stderr, "The width and height can be specified as command line arguments. Defaulting to %i %i\n", w, h);
+	}
+	else {
+		w = atoi(argv[1]);
+		h = atoi(argv[2]);
+	}
+	
+	Program6 prog(w, h);
+	
+    return EXIT_SUCCESS;
+}

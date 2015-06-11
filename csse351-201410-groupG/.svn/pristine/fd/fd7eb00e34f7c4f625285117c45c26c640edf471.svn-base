@@ -1,0 +1,16 @@
+#version 120
+varying vec3 vertex;
+varying vec3 normal;
+varying vec3 eye;
+void main()
+{
+	vec3 L = normalize(vec3(4,4,4)-vertex);
+	vec3 E = normalize(-vertex);
+	vec3 R = normalize(-reflect(L, normal));
+	vec4 Iamb =vec4(0.3f,0.3f,0.3f,0.3f);
+	vec4 diffuse = vec4(0.4f,0.4f,0.4f,0.4f)*max(dot(normal,L),0.0);
+	diffuse = clamp(diffuse, 0.0, 1.0);
+	vec4 specular = vec4(1.0f,1.0f,1.0f,1.0f) * pow(max(dot(R, E),0.0), 50.0);
+	specular = clamp(specular, 0.0,1.0);
+	 gl_FragColor = Iamb + diffuse + specular; 
+}

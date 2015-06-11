@@ -1,0 +1,130 @@
+#include "Item.h"
+#include <vector>
+#include <math.h>
+using namespace std; //makes using vectors easy
+typedef vector< vector < vector < vector< Item > > > > DataContainer;
+class Map
+{
+
+public:
+	DataContainer mapGrid;
+	Item floorGrid[30][45][2];
+	DataContainer collisionGrid;
+	vector<GLfloat> positions;
+	vector<GLfloat> normals;
+	Map()
+	{
+		mapGrid.resize(30);
+		for (int i = 0; i < 30; ++i) {
+			mapGrid[i].resize(45);
+			for (int j = 0; j < 45; ++j) {
+				mapGrid[i][j].resize(2);
+			}
+		}
+		collisionGrid.resize(30);
+		for (int i = 0; i < 30; ++i) {
+			collisionGrid[i].resize(45);
+			for (int j = 0; j < 45; ++j) {
+				collisionGrid[i][j].resize(2);
+			}
+		}
+		Wall wl = Wall(5, 0, 0, 0);
+		collisionGrid[5][0][0].push_back(wl);
+		//fill with objects
+		for (int m = 0; m < 30; m++){
+			for (int j = 0; j < 45; j++){
+				for (int k = 0; k < 2; k++){
+					mapGrid[m][j][k] = collisionGrid[m][j][k];
+					mapGrid[m][j][k].push_back(floorGrid[m][j][k]);
+				}
+			}
+		}
+		for (int n = 0; n < 30; n++){
+			for (int j = 0; j < 45; j++){
+				for (int k = 0; k < 2; k++){
+					for (int l = 0; l < mapGrid[n][j][k].size(); l++){
+						vector<GLfloat> posFromItem = mapGrid[n][j][k][l].getPolygons();
+						for(int i = 0; i < posFromItem.size(); i++){
+							positions.push_back(posFromItem[i]);
+						}
+						vector<GLfloat> normFromItem = mapGrid[n][j][k][l].getNormals();
+						for(int i = 0; i < normFromItem.size(); i++){
+							normals.push_back(normFromItem[i]);
+						}
+						//positions.insert(positions.end(), mapGrid[n][j][k][l].getPolygons().begin(), mapGrid[n][j][k][l].getPolygons().end());
+					}
+				}
+			}
+		}
+	}
+
+	vector<Item> getObjectsAt(int x, int y, int z){
+		return mapGrid[x][y][z];
+	}
+
+	size_t getPositionBytes() const {
+		return positions.size()*sizeof(GLfloat);
+	}
+
+	GLfloat const * getPosition() const {
+		return &positions[0];
+	}
+
+	size_t getNormalBytes() const {
+		return normals.size()*sizeof(GLfloat);
+	}
+
+	GLfloat const * getNormals() const {
+		return &normals[0];
+	}
+	
+	float getUnitSize() {
+		return 1.0f;
+	}
+
+	bool bottomBlocked(float x, float y, float z) {
+		int xF = floor(x);
+		int yC = ceil(y);
+		int zF = floor(z);
+		for(int i = 0; i < collisionGrid[xF][yC-1][zF].size(); i++){
+			if(collisionGrid[xF][yC-1][zF].at(i).getOrientation()==0)
+			return true;
+		}
+		return false;
+	}
+
+	bool topBlocked(float x, float y, float z) {
+		int xF = floor(x);
+		int yC = ceil(y);
+		int zF = floor(z);
+		for(int i = 0; i < collisionGrid[xF][yC][zF].size(); i++){
+			if(collisionGrid[xF][yC][zF].at(i).getOrientation()==0)
+			return true;
+		}
+		return false;
+	}
+	
+	bool leftBlocked(float x, float y, float z) {
+		int xF = floor(x);
+		int yC = ceil(y);
+		int zF = floor(z);
+		for(int i = 0; i < collisionGrid[xF][yC][zF].size(); i++){
+			if(collisionGrid[xF][yC][zF].at(i).getOrientation()==1)
+			return true;
+		}
+		return false;
+	}
+
+	bool rightBlocked(float x, float y, float z) {
+		int xF = floor(x);
+		int yC = ceil(y);
+		int zF = floor(z);
+		for(int i = 0; i < collisionGrid[xF+1][yC][zF].size(); i++){
+			if(collisionGrid[xF+1][yC][zF].at(i).getOrientation()==1)
+			return true;
+		}
+		return false;
+	}
+	
+	
+};
